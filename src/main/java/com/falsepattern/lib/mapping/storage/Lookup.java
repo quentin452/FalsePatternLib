@@ -32,15 +32,16 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
+import java.util.WeakHashMap;
 
 @Accessors(fluent = true)
 @EqualsAndHashCode
 @StableAPI(since = "0.10.0")
 public class Lookup<T> {
     private final Set<T> values = new HashSet<>();
-    private final Map<String, T> notch = new HashMap<>();
-    private final Map<String, T> srg = new HashMap<>();
-    private final Map<String, T> mcp = new HashMap<>();
+    private final WeakHashMap<String, T> notch = new WeakHashMap<>();
+    private final WeakHashMap<String, T> srg = new WeakHashMap<>();
+    private final WeakHashMap<String, T> mcp = new WeakHashMap<>();
 
     private static <T> void removeFirst(Iterator<Map.Entry<String, T>> iterator, T value) {
         while (iterator.hasNext()) {
